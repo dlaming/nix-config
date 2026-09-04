@@ -19,7 +19,7 @@
       dev = "nix develop -c zsh";
       pay = "pueue add yt-dlp --no-playlist --cookies-from-browser chrome";
       gitacp = "git add -A && git commit -am. && git push";
-      nixacp = "f() { cd /etc/nixos && git add . && git commit -m \"$1\" && git push; }; f";
+      nixacp = "f() { git -C /etc/nixos add . && git -C /etc/nixos commit -m \"$1\" && git -C /etc/nixos push; }; f";
       sysrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       systest = "sudo nixos-rebuild test --flake /etc/nixos#nixos";
     };
