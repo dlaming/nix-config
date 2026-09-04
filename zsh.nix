@@ -51,10 +51,4 @@
   home.packages = with pkgs; [
     pure-prompt
   ];
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
 }
