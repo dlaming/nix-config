@@ -22,6 +22,7 @@
       sysupgrade = "nix flake update --flake /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       sysrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       systest = "sudo nixos-rebuild test --flake /etc/nixos#nixos";
+      nixgc = "sudo nix-collect-garbage --delete-older-than 7d";
     };
 
     initContent = ''
