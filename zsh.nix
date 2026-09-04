@@ -18,8 +18,6 @@
     shellAliases = {
       dev = "nix develop -c zsh";
       pay = "pueue add yt-dlp --no-playlist --cookies-from-browser chrome";
-      gitacp = "git add -A && git commit -am. && git push";
-      nixacp = "f() { git -C /etc/nixos add . && git -C /etc/nixos commit -m \"$1\" && git -C /etc/nixos push; }; f";
       sysupdate = "nix flake update --flake /etc/nixos";
       sysupgrade = "nix flake update --flake /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       sysrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
@@ -35,6 +33,16 @@
       timezsh() {
         shell=''${1-$SHELL}
         for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+      }
+      gitacp() { 
+        git add -A &&
+        git commit --allow-empty-message -m "$*" &&
+        git push
+      }
+      nixacp() {
+        git -C /etc/nixos add -A &&
+        git -C /etc/nixos commit --allow-empty-message -m "$*" &&
+        git -C /etc/nixos push
       }
     '';
   };
