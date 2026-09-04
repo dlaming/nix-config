@@ -15,10 +15,8 @@
 
   home.packages = with pkgs; [
     wget
-    git
     github-cli
     bat
-    eza
     ripgrep
     fzf
     zoxide
