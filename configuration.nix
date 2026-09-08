@@ -30,13 +30,28 @@
     nix-direnv.enable = true;
   };
 
+  services.journald.settings.Journal = {
+    Storage = "volatile";
+    RuntimeMaxUse = "100M";
+  };
+
   # System Maintenance
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 7d";
   };
+  systemd.services.nix-gc.preStart = ''
+    ${pkgs.nix}/bin/nix-env --delete-generations +5 -p /nix/var/nix/profiles/system
+  '';
   nix.settings.auto-optimise-store = true;
+  
+  boot.tmp.useTmpfs = true;        # /tmp → tmpfs (NixOS option)
+  boot.tmp.tmpfsSize = "4G";       # Cap it
+# Nix build directory (biggest single source of temp writes)
+# By default Nix builds in /tmp, so boot.tmp.useTmpfs covers it.
+# If you want a dedicated one:
+  nix.settings.build-dir = "/tmp/nix-build";
 
   # WSL settings
   wsl.enable = true;
