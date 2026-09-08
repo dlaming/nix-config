@@ -6,6 +6,14 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    
+    history = {
+      size = 5000;
+      save = 5000;
+      path = "$HOME/.zsh_history";
+      ignoreAllDups = true;
+      share = true;
+    };
 
     oh-my-zsh = {
       enable = true;
