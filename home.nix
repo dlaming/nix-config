@@ -16,6 +16,7 @@
   home.packages = with pkgs; [
     wget
     github-cli
+    git-filter-repo
     bat
     ripgrep
     fzf
