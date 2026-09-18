@@ -51,7 +51,7 @@
 # Nix build directory (biggest single source of temp writes)
 # By default Nix builds in /tmp, so boot.tmp.useTmpfs covers it.
 # If you want a dedicated one:
-  nix.settings.build-dir = "/tmp/nix-build";
+# nix.settings.build-dir = "/tmp/nix-build";
 
   # WSL settings
   wsl.enable = true;
@@ -76,4 +76,7 @@
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "26.05";
+
+  # Fix exit code 4 on WSL during switch
+  services.dbus.implementation = "dbus";
 }

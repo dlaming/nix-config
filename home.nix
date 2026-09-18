@@ -35,7 +35,7 @@
   programs.git = {
     enable = true;
     settings.user.name = "dlaming";
-    settings.user.email = "david@laming.me";
+    settings.user.email = "50422489+dlaming@users.noreply.github.com";
   };
 
   programs.eza = {
