@@ -53,6 +53,27 @@
         git -C /etc/nixos commit --allow-empty-message -m "$*" &&
         git -C /etc/nixos push
       }
+      githubclone() {
+        local url="$1"
+        local repo owner
+
+        if [[ "$url" =~ 'github\.com[:/]([^/]+)/([^/]+?)(\.git)?$' ]]; then
+          owner="''${match[1]}"
+          repo="''${match[2]}"
+          repo="''${repo%.git}"
+
+          mkdir -p "$HOME/code/$owner"
+          git clone "$url" "$HOME/code/$owner/$repo"
+        else
+          git clone "$@"
+        fi
+      }
+      reposearch() {
+        local repo
+        repo=$(find "$HOME/code" -mindepth 2 -maxdepth 2 -type d 2>/dev/null |
+          fzf --query="$1") || return
+        cd "$repo"
+      }
     '';
   };
 
