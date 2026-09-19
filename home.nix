@@ -25,7 +25,6 @@
     yt-dlp
     pueue
     fastfetch
-    nixfmt
     tmux
     fd
     fdupes
@@ -48,7 +47,6 @@
     enable = true;
     enableZshIntegration = true;
   };
-  
 
   programs.yazi = {
     enable = true;
