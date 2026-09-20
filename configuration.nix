@@ -22,13 +22,9 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  programs.nix-ld.enable = true;
+  users.users.nixos.extraGroups = [ "docker" ];
 
-  # Direnv setup
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
+  programs.nix-ld.enable = true;
 
   services.journald.settings.Journal = {
     Storage = "volatile";
