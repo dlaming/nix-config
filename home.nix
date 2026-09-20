@@ -30,6 +30,7 @@
     fdupes
     pandoc
     btop
+    dig
   ];
 
   programs.git = {
