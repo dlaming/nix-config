@@ -35,10 +35,12 @@
 
   programs.git = {
     enable = true;
-    settings.user.name = "dlaming";
-    settings.user.email = "50422489+dlaming@users.noreply.github.com";
     lfs.enable = true;
-    extraConfig.init.defaultBranch = "main";
+    settings = {
+      init.defaultBranch = "main";
+      user.name = "dlaming";
+      user.email = "50422489+dlaming@users.noreply.github.com";
+    };
   };
 
   programs.eza = {
